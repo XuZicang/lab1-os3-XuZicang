@@ -3,11 +3,11 @@ mod switch;
 #[allow(clippy::module_inception)]
 mod task;
 
-use crate::config::{CLOCK_FREQ, MAX_APP_NUM, MAX_SYSCALL_NUM};
+use crate::config::{MAX_APP_NUM, MAX_SYSCALL_NUM};
 use crate::loader::{get_num_app, init_app_cx};
 use crate::sync::UPSafeCell;
 use crate::syscall::TaskInfo;
-use crate::timer::{get_time, get_time_us};
+use crate::timer::{get_time_us};
 use lazy_static::*;
 use switch::__switch;
 pub use task::{TaskControlBlock, TaskStatus};
