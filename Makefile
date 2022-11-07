@@ -2,7 +2,6 @@ DOCKER_NAME ?= rust-os-camp-2022
 DIR := workplace
 .PHONY: docker build_docker
 
-
 test: test3 test4 test5 test6 test7 test8
 
 lab1: test3
@@ -65,7 +64,7 @@ clean:
 docker:
 	docker run --rm -it -v ${PWD}:/mnt -w /mnt ${DOCKER_NAME} bash
 
-build_docker: 
+build_docker:
 	docker build -t ${DOCKER_NAME} .
 
 setupclassroom_test1:
@@ -164,8 +163,9 @@ setupclassroom_test8:
 	git commit -m"update classroom.yml .keep autograding.json for classroom CI test"
 	git push
 
-# for local ubuntu with zsh shell SHELL, need root for sudo 
+# for local ubuntu with zsh shell SHELL, need root for sudo
 ubuntu_local_setenv:
+	sudo apt-get update
 	sudo apt install autoconf automake autotools-dev curl libmpc-dev libmpfr-dev libgmp-dev \
               gawk build-essential bison flex texinfo gperf libtool patchutils bc \
               zlib1g-dev libexpat-dev pkg-config  libglib2.0-dev libpixman-1-dev git tmux python3 ninja-build zsh -y
@@ -181,7 +181,8 @@ ubuntu_local_setenv:
 	rustc --version
 
 # for github codespaces ubuntu with zsh SHELL, need root for sudo
-codespaces_setenv:	
+codespaces_setenv:
+	sudo apt-get update
 	sudo apt install autoconf automake autotools-dev curl libmpc-dev libmpfr-dev libgmp-dev \
               gawk build-essential bison flex texinfo gperf libtool patchutils bc \
               zlib1g-dev libexpat-dev pkg-config  libglib2.0-dev libpixman-1-dev git tmux python3 ninja-build zsh -y
